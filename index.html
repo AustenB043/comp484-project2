@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load jQuery BEFORE our app script so $ is defined when script.js evaluates -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -20,29 +24,59 @@
     <main>
       <section class="pet-image-container">
          <!-- Replace pet image with your own pet image -->
-        <img class="pet-image" src="https://cdn.glitch.com/3aa98e05-3216-497c-a251-210ae4713a83%2Fhound.jpg?1541715339220">
+        <img class="pet-image" src="images/hound.jpg" alt="Your Giga Pet">
       </section>
       <section class="dashboard">
         <div>Name: <strong><span class="name"></span></strong></div>
         <div>Weight: <strong><span class="weight"></span> pounds</strong></div>
         <div>Happiness: <strong><span class="happiness"></span> tail wags (per min)</strong></div>
+        <div>Energy: <strong><span class="energy"></span></strong></div>
         <div class="button-container">
-          <button class="treat-button">
+          <button
+            type="button"
+            class="action-button treat-button"
+            data-action="treat"
+            data-happiness="1"
+            data-weight="1"
+            data-energy="0">
             Treat
           </button>
-          <button class="play-button">
+          <button
+            type="button"
+            class="action-button play-button"
+            data-action="play"
+            data-happiness="2"
+            data-weight="-1"
+            data-energy="-2">
             Play
           </button>
-          <button class="exercise-button">
+          <button
+            type="button"
+            class="action-button exercise-button"
+            data-action="exercise"
+            data-happiness="-1"
+            data-weight="-2"
+            data-energy="-2">
             Exercise
           </button>
+          <button
+            type="button"
+            class="action-button sleep-button"
+            data-action="sleep"
+            data-happiness="1"
+            data-weight="0"
+            data-energy="3">
+            Sleep
+          </button>
         </div>
+        <div class="pet-comment" aria-live="polite"></div>
       </section>
     </main>
+    
+    <!-- Preloaded audio assets -->
+    <audio id="sound-eat" preload="auto" src="sounds/Dog eating sound effect  (no copyright).mp3"></audio>
+    <audio id="sound-bark" preload="auto" src="sounds/Happy Puppy Barks Sound Effect.mp3"></audio>
+    <audio id="sound-walk" preload="auto" src="sounds/Medium Size Dog Walking Pant.mp3"></audio>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
   </body>
 </html>
