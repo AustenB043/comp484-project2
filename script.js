@@ -31,6 +31,9 @@ function onActionButtonClick() {
   pet_info.weight += deltaWeight;
   pet_info.energy = (pet_info.energy || 0) + deltaEnergy;
 
+  // Update pet image based on action and manage sleep overlay
+  setPetImageForAction(action);
+
   // Prevent stats from going below zero
   checkAndUpdatePetInfoInHtml();
 
@@ -130,5 +133,21 @@ function playActionSound(action) {
     } catch (e) {
       // Ignore autoplay/permission errors; user interaction should generally allow playback
     }
+  }
+}
+
+function setPetImageForAction(action) {
+  var map = {
+    treat: "images/Dog Eating.png",
+    play: "images/Dog Playing.png",
+    exercise: "images/Dog Exercising.png",
+    sleep: "images/Dog Sleeping.png"
+  };
+  var imgSrc = map[action] || map.play;
+  $('.pet-image').attr('src', imgSrc);
+  if (action === 'sleep') {
+    $('.overlay-zzz').show();
+  } else {
+    $('.overlay-zzz').hide();
   }
 }
